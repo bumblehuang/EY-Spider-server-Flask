@@ -20,8 +20,8 @@ today = date.today()
 
 def data_grabber_with_version():
     db = mysql.connector.connect(user='root',
-                                 password='Bumble@20180628',
-                                 host='rm-j6c9v62tlv18x957p.mysql.rds.aliyuncs.com',
+                                 password='',
+                                 host='',
                                  port='3306',
                                  database='vulnerabilities'
                                  )

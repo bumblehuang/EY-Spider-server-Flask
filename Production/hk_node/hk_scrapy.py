@@ -187,7 +187,7 @@ def cve_scrapper(url_page_list,job_id,created_time,task_id):
             bsend_out_data['vul_hash']=hashvalue
             data_list.append(bsend_out_data)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/cve_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxx:8080/cve_data",data=json.dumps(data_list),headers=headers)
         logger.debug(receive1.status_code)
         logger.debug('sending heartbeat reporting job information to the console.......')
         suceess_count+=1
@@ -198,7 +198,7 @@ def cve_scrapper(url_page_list,job_id,created_time,task_id):
         logger.debug(total_length)
         logger.debug(send_out_data)
         logger.debug('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-        receive2=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+        receive2=requests.post("http://xxxx:8080/reporting",data=send_out_data)
         logger.debug(receive2.status_code)
         logger.debug('end of the loop..........')
     logger.debug('###################we have sent the email and the status is #############')
@@ -217,7 +217,7 @@ def cve_scrapper(url_page_list,job_id,created_time,task_id):
     send_out_data['location']=location
     send_out_data['percentage']=percentage
     send_out_data['unsuccessful_count']=unsuccessful_count
-    receive2=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+    receive2=requests.post("http://xxxx:8080/reporting",data=send_out_data)
     logger.debug(receive2.status_code)
 
 ################################### Hades Specail Area #########################################
@@ -346,12 +346,12 @@ def cisco_scrapper(url_page_list,job_id,created_time,task_id):
 
         data_list.append(dic)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/cisco_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxx:8080/cisco_data",data=json.dumps(data_list),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count) / total_length
         send_out_data= job_update(send_out_data,'percentage',percentage)
         if index % 11 ==0:## heartbeat sending reporting for the job status......
-            receive2=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+            receive2=requests.post("http://xxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -359,7 +359,7 @@ def cisco_scrapper(url_page_list,job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'lasted_time',lasted_time)
     send_out_data= job_update(send_out_data,'status',FINISHED)
     send_out_data= job_update(send_out_data,'percentage',percentage)
-    receive3=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxx:8080/reporting",data=send_out_data)
 
 ###infosecinstitute######
 def infosecinstitute_Urlcreator(url, page):
@@ -497,13 +497,13 @@ def infosecinstitute(job_id,created_time,task_id):
         print(url)
         print(index)
         dic = infosecinstitute_scrapper(url)
-        receive1=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/infosecinstitute_data",data=json.dumps(dic))##,headers=headers
+        receive1=requests.post("http://xxxx:8080/infosecinstitute_data",data=json.dumps(dic))##,headers=headers
         suceess_count+=1
         percentage = float(suceess_count) / total_length
 
         send_out_data= job_update(send_out_data,'percentage',percentage)
         if index % 14 ==0:
-            receive666=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+            receive666=requests.post("http://xxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     send_out_data= job_update(send_out_data,'percentage',percentage)
     send_out_data= job_update(send_out_data,'status',RUNNING)
@@ -515,7 +515,7 @@ def infosecinstitute(job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'lasted_time',lasted_time)
     send_out_data= job_update(send_out_data,'status',FINISHED)
     send_out_data= job_update(send_out_data,'percentage',percentage)
-    receive3=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxx:8080/reporting",data=send_out_data)
 
 def trendmicro_Urlcreator(first_page, page):
     url_page_list = []
@@ -616,11 +616,11 @@ def trendmicro_scrapper(url_page_list,job_id,created_time,task_id):
                 dic['news_link']=link
                 data_list.append(dic)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/trendmicro_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxx:8080/trendmicro_data",data=json.dumps(data_list),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count) / total_length
         send_out_data= job_update(send_out_data,'percentage',percentage)
-        receive2=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+        receive2=requests.post("http://xxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -628,7 +628,7 @@ def trendmicro_scrapper(url_page_list,job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'lasted_time',lasted_time)
     send_out_data= job_update(send_out_data,'status',FINISHED)
     send_out_data= job_update(send_out_data,'percentage',percentage)
-    receive3=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxx:8080/reporting",data=send_out_data)
 
 ################################### Hades Specail Area #########################################
 

@@ -110,7 +110,7 @@ def order_cve():
                 # scheduler.remove_job(task_id)
                 send_out_parameters['task_id']=task_id
                 send_out_parameters['task_name']= task_node+'-'+task_owner+'-'+str(datetime.datetime.strptime(created_time,"%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d"))+'-'+task_crawlerType
-                receive=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/insert_task",data= send_out_parameters)
+                receive=requests.post("http://xxxx/insert_task",data= send_out_parameters)
                 Job_Store[task_id]=1
                 ##created_time,task_id,task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId,task_crawlerType,task_url,task_node,task_communication
                 scheduler.add_job(do_cve_task,'interval', days=task_frequency,id=task_id,start_date=task_startTime,args=[created_time,task_id,task_communication])
@@ -162,7 +162,7 @@ def order_cisco():
                 # scheduler.remove_job(task_id)
                 send_out_parameters['task_id']=task_id
                 send_out_parameters['task_name']= task_node+'-'+task_owner+'-'+str(datetime.datetime.strptime(created_time,"%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d"))+'-'+task_crawlerType
-                receive=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/insert_task",data= send_out_parameters)
+                receive=requests.post("http://xxxx/insert_task",data= send_out_parameters)
                 Job_Store[task_id]=1
                 ##created_time,task_id,task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId,task_crawlerType,task_url,task_node,task_communication
                 scheduler.add_job(do_cisco_task,'interval', days=task_frequency,id=task_id,start_date=task_startTime,args=[created_time,task_id,task_communication])
@@ -214,7 +214,7 @@ def order_infosecinstitute():
                 # scheduler.remove_job(task_id)
                 send_out_parameters['task_id']=task_id
                 send_out_parameters['task_name']= task_node+'-'+task_owner+'-'+str(datetime.datetime.strptime(created_time,"%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d"))+'-'+task_crawlerType
-                receive=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/insert_task",data= send_out_parameters)
+                receive=requests.post("http://xxxx/insert_task",data= send_out_parameters)
                 Job_Store[task_id]=1
                 ##created_time,task_id,task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId,task_crawlerType,task_url,task_node,task_communication
                 scheduler.add_job(do_infosecinstitute_task,'interval', days=task_frequency,id=task_id,start_date=task_startTime,args=[created_time,task_id,task_communication])
@@ -264,7 +264,7 @@ def order_trendmicro():
                 # scheduler.remove_job(task_id)
                 send_out_parameters['task_id']=task_id
                 send_out_parameters['task_name']= task_node+'-'+task_owner+'-'+str(datetime.datetime.strptime(created_time,"%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d"))+'-'+task_crawlerType
-                receive=requests.post("http://cti_hk_cns00.int.eycyber.com:8080/insert_task",data= send_out_parameters)
+                receive=requests.post("http://xxxx/insert_task",data= send_out_parameters)
                 Job_Store[task_id]=1
                 ##created_time,task_id,task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId,task_crawlerType,task_url,task_node,task_communication
                 scheduler.add_job(do_trendmicro_task,'interval', days=task_frequency,id=task_id,start_date=task_startTime,args=[created_time,task_id,task_communication])

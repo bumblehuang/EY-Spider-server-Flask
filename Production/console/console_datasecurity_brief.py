@@ -19,8 +19,8 @@ bucket = oss2.Bucket(auth, 'oss-cn-shanghai.aliyuncs.com', 'cti-pub-files')
 
 def get_github(keywords):
     db = mysql.connector.connect(user='root',
-                                 password='Bumble@20180628',
-                                 host='rm-j6c9v62tlv18x957p.mysql.rds.aliyuncs.com',
+                                 password='',
+                                 host='',
                                  port='3306',
                                  database='github'
                                  )
@@ -56,8 +56,8 @@ def get_github(keywords):
 
 def get_weixin(keywords):
     db = mysql.connector.connect(user='root',
-                                 password='Bumble@20180628',
-                                 host='rm-j6c9v62tlv18x957p.mysql.rds.aliyuncs.com',
+                                 password='',
+                                 host='',
                                  port='3306',
                                  database='0_social_media'
                                  )

@@ -22,7 +22,7 @@ oss_password = os.environ['oss_password']
 db_host = os.environ['db_host']
 db_password = os.environ['db_password']
 auth = oss2.Auth(oss_host, oss_password)
-bucket = oss2.Bucket(auth, 'oss-cn-shanghai.aliyuncs.com', 'cti-pub-files')
+bucket = oss2.Bucket(auth, '', 'cti-pub-files')
 def getnews(category):
 
     db = mysql.connector.connect(user='root',

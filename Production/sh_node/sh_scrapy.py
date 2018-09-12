@@ -213,7 +213,7 @@ def cnvd_scrapper(url_page_list,job_id,created_time,task_id):
         'vul_patch':dic['厂商补丁'], 'vul_author':'', 'vul_expCode':'', 'vul_hash':hashvalue}
         data_list.append(dicts)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/cnvd_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxxxx:8080/cnvd_data",data=json.dumps(data_list),headers=headers)
         #. 每次大 for loop 都会有一个list  你一个小for loop 装一个字典， 这个字典 里面的信息是job的信息 ， 加进去。
         #[{}]
 
@@ -223,12 +223,12 @@ def cnvd_scrapper(url_page_list,job_id,created_time,task_id):
         # send_out_data= job_update(send_out_data,'status',RUNNING)
         # send_out_data= job_update(send_out_data,'location',LOCATION)
         #reporting ...... 
-        receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+        receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
         # if index % 1400 ==0:## heartbeat sending reporting
         #     logger.debug('===============================')
         #     logger.debug(send_out_data)
         #     logger.debug('===============================')
-        #     receive2=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+        #     receive2=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -238,7 +238,7 @@ def cnvd_scrapper(url_page_list,job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'percentage',percentage)
     logger.debug('============== the reporting data is below=================')
     logger.debug(send_out_data)
-    receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
 
 def xuanwu_Urlcreator(days):
     now = datetime.datetime.now()
@@ -365,7 +365,7 @@ def xuanwu_scrapper(created_time, task_id, job_id,url_page_list):
             send_out_data['news_hash'] = hashvalue
             data_list.append(send_out_data)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/xuanwu_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxxxx:8080/xuanwu_data",data=json.dumps(data_list),headers=headers)
         suceess_count += 1
         percentage = float(suceess_count) / total_length
         logger.debug('================= we are checking the two digits .... ==============')
@@ -376,12 +376,12 @@ def xuanwu_scrapper(created_time, task_id, job_id,url_page_list):
         # send_out_data= job_update(send_out_data,'status',RUNNING)
         # send_out_data= job_update(send_out_data,'location',LOCATION)
         # reporting ......
-        receive3 = requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting", data=job_data)
+        receive3 = requests.post("http://xxxxxx:8080/reporting", data=job_data)
         # if index % 1400 ==0:## heartbeat sending reporting
         #     logger.debug('===============================')
         #     logger.debug(send_out_data)
         #     logger.debug('===============================')
-        #     receive2=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+        #     receive2=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     logger.debug(total_length)
     logger.debug(suceess_count)
@@ -393,7 +393,7 @@ def xuanwu_scrapper(created_time, task_id, job_id,url_page_list):
     job_data = job_update(job_data, 'percentage', percentage)
     logger.debug('============== the reporting data is below=================')
     logger.debug(job_data)
-    receive3 = requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting", data=job_data)
+    receive3 = requests.post("http://xxxxxx:8080/reporting", data=job_data)
 
 
 
@@ -609,11 +609,11 @@ def cac(job_id,created_time,task_id):
             dic = cac_scrapper(url,category)
             data_list.append(dic)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/cac_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxxxx:8080/cac_data",data=json.dumps(data_list),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count) / total_length
         send_out_data= job_update(send_out_data,'percentage',percentage)
-        receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+        receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -623,7 +623,7 @@ def cac(job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'percentage',percentage)
     logger.debug('============== the reporting data is below=================')
     logger.debug(send_out_data)
-    receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
 ######################compliance#########################
 
 
@@ -716,12 +716,12 @@ def tc260_scrapper(url_page,job_id,created_time,task_id):
 
         # data_list.append(dic)
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/tc260_data",data=json.dumps(dic),headers=headers)
+        receive1=requests.post("http://xxxxxx:8080/tc260_data",data=json.dumps(dic),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count) / total_length
         send_out_data= job_update(send_out_data,'percentage',percentage)
         if index % 11 ==0:## heartbeat sending reporting for the job status......
-            receive2=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+            receive2=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -729,7 +729,7 @@ def tc260_scrapper(url_page,job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'lasted_time',lasted_time)
     send_out_data= job_update(send_out_data,'status',FINISHED)
     send_out_data= job_update(send_out_data,'percentage',percentage)
-    receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
 
 
 ##########safe_gove
@@ -850,14 +850,14 @@ def save_gove_scrapper(url_page,job_id,created_time,task_id):
 
 
         headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/safe_gave_data",data=json.dumps(dic),headers=headers)
+        receive1=requests.post("http://xxxxxx:8080/safe_gave_data",data=json.dumps(dic),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count) / total_length
         send_out_data= job_update(send_out_data,'percentage',percentage)
         send_out_data= job_update(send_out_data,'status',RUNNING)
         send_out_data= job_update(send_out_data,'location',LOCATION)
         if index % 11 ==0:## heartbeat sending reporting for the job status......
-            receive2=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+            receive2=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -865,7 +865,7 @@ def save_gove_scrapper(url_page,job_id,created_time,task_id):
     send_out_data= job_update(send_out_data,'lasted_time',lasted_time)
     send_out_data= job_update(send_out_data,'status',FINISHED)
     send_out_data= job_update(send_out_data,'percentage',percentage)
-    receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data)
+    receive3=requests.post("http://xxxxxx:8080/reporting",data=send_out_data)
 ################################### Hades Specail Area #########################################
 
 def job_update(send_out_data,key,value):

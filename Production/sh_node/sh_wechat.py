@@ -297,11 +297,11 @@ def wechat_scrape(job_id,created_time,task_id,keywords):
                             send_out_data['keyword']=keyword
                             data_list.append(send_out_data)
                             headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-        receive1=requests.post("http://cti_hk_cns00.eycyber.com:8080/wechat_data",data=json.dumps(data_list),headers=headers)
+        receive1=requests.post("http://xxxx:8080/wechat_data",data=json.dumps(data_list),headers=headers)
         suceess_count+=1
         percentage = float(suceess_count)/ total_length
         send_out_data2= job_update(send_out_data2,'percentage',percentage)
-        receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data2)
+        receive3=requests.post("http://xxxx:8080/reporting",data=send_out_data2)
     percentage = float(suceess_count) / total_length
     end_time = datetime.datetime.now()
     lasted_time = end_time - start_time
@@ -311,7 +311,7 @@ def wechat_scrape(job_id,created_time,task_id,keywords):
     send_out_data2= job_update(send_out_data2,'percentage',percentage)
     logger.debug('============== the reporting data is below=================')
     logger.debug(send_out_data2)
-    receive3=requests.post("http://cti_hk_cns00.eycyber.com:8080/reporting",data=send_out_data2)
+    receive3=requests.post("http://xxxx:8080/reporting",data=send_out_data2)
 
 def job_update(send_out_data,key,value):
     send_out_data[key]=value
