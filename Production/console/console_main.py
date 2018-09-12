@@ -355,7 +355,7 @@ def insert_social_task_fromAdmin(task_owner,task_startTime,task_endTime,task_fre
     logger.debug('-----------------post into node 02 -------------------')
     logger.debug(send_in_parameters)
     if task_crawlerId == 'wechat':
-        receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/wechat",data=send_in_parameters)
+        receive=requests.post("http://xxxx:8082/wechat",data=send_in_parameters)
         logger.debug('========== posted into wechat route')
     if task_crawlerId == 'github':
         logger.debug('尚未开发。。。。。。。。')
@@ -507,14 +507,14 @@ def email_manual(insert_report_type,insert_report_email):
         logger.debug('********'+insert_report_email+'******')
         console_vul.write_html('report-v15.html',report_id,request_id)
         console_vul_brief.write_html('test_vul_word0705.html',report_id,request_id)
-        console_email.mail_sender2("云雀网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html',insert_report_email)
+        console_email.mail_sender2("xx网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html',insert_report_email)
         logger.debug('hello. we get in vul')
     if insert_report_type == 'industry':
         logger.debug('********'+insert_report_type+'******')
         logger.debug('********'+insert_report_email+'******')
         console_industry_second.write_html('industry.html',report_id,request_id)
         console_industry_second_brief.write_html('industry_mail.html',report_id,request_id)
-        console_email.mail_sender2("云雀网络安全行业威胁情报"+postfix,'industry_mail.html',insert_report_email)
+        console_email.mail_sender2("xx网络安全行业威胁情报"+postfix,'industry_mail.html',insert_report_email)
         logger.debug('hello. we get in industry.........')
 
 @event.listens_for(task, 'after_update')
@@ -531,7 +531,7 @@ def change_task_after_update(mapper, connection, target):
         send_out_information['new_end'] = str(new_end)
         send_out_information['task_id'] = str(task_id)
         logger.debug(send_out_information)
-        receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/edit_task",data=send_out_information)
+        receive=requests.post("xxx:8081/edit_task",data=send_out_information)
         logger.debug(receive)
     if target.task_node == 'SH':
         new_start = target.task_startTime
@@ -545,7 +545,7 @@ def change_task_after_update(mapper, connection, target):
         send_out_information['new_end'] = str(new_end)
         send_out_information['task_id'] = str(task_id)
         logger.debug(send_out_information)
-        receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/edit_task",data=send_out_information)
+        receive=requests.post("xxx:8082/edit_task",data=send_out_information)
         logger.debug(receive)
     else:
         logger.debug('changing console task')
@@ -642,29 +642,6 @@ admin.add_view(MyView_customer(vul_customer, db.session,category='Customer List'
 admin.add_view(MyView_customer(industry_customer, db.session,category='Customer List'))
 admin.add_view(MyView_customer(media_customer, db.session,category='Customer List'))
 
-# @login_manager.request_loader
-# def request_loader(req):
-#     logger.debug("request_loader url is %s, request args is %s" % (req.url, req.data))
-#     url=req.url
-#     index1 = url.find('username=')+9
-#     url2= url[index1:]
-#     index2  = url2.find('&')
-#     user_name = url2[:index2]
-#     user_pwd = url2[index2+10:]
-#     logger.debug(user_name)
-#     logger.debug(user_pwd)
-#     if user_name == 'admin123' and user_pwd== '123456':
-#         return redirect('http://localhost:9000/admin/')
-#     authorization = request.headers.get('Authorization')
-#     logger.debug("Authorization is %s" % authorization)
-#     # 模拟api登录
-#     if authorization:
-#         # get user from authorization
-#         user = User()
-#         user.id = 'admin'
-#         logger.debug("user is %s" % user)
-#         return user
-#     return None
 
 @login_manager.user_loader
 def user_loader(username):
@@ -712,7 +689,7 @@ def login():
         next_url = request.args.get("next")
         logger.debug('next is %s' % next_url)
 
-        if username == 'Jacob' and password== 'Test@201807':
+        if username == 'xxx' and password== 'xxx':
             # set login user
             user1 = User()
             user1.id = username
@@ -808,7 +785,7 @@ def handleCNVD():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/cnvd",data= send_in_parameters)
+            receive=requests.post("http://xxxx:8082/cnvd",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -872,7 +849,7 @@ def cveOrder():
             send_in_parameters['task_communication']=task_communication
 
             logger.debug('-----------------post into node 02 -------------------')
-            receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/cve_order",data= send_in_parameters)
+            receive=requests.post("http://xxx:8081/cve_order",data= send_in_parameters)
             logger.debug('did we get here')
             return jsonify({'msg':'successful'})
 
@@ -931,7 +908,7 @@ def wechat_task():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/wechat",data= send_in_parameters)
+            receive=requests.post("http://xxxx:8082/wechat",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1105,7 +1082,7 @@ def insert_cve_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,t
     send_in_parameters['task_node']='HK'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/cve_order",data= send_in_parameters)
+    receive=requests.post("http://xxx:8081/cve_order",data= send_in_parameters)
 def insert_cnvd_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1117,7 +1094,7 @@ def insert_cnvd_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,
     send_in_parameters['task_node']='SH'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/cnvd",data= send_in_parameters)
+    receive=requests.post("http://xxxx:8082/cnvd",data= send_in_parameters)
 def insert_xuanwu_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1129,7 +1106,7 @@ def insert_xuanwu_fromADMIN(task_owner,task_startTime,task_endTime,task_frequenc
     send_in_parameters['task_node']='SH'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/xuanwu_sh",data= send_in_parameters)
+    receive=requests.post("http://xxxx:8082/xuanwu_sh",data= send_in_parameters)
 def insert_cisco_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1141,7 +1118,7 @@ def insert_cisco_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency
     send_in_parameters['task_node']='HK'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/cisco_order",data= send_in_parameters)
+    receive=requests.post("http://xxx:8081/cisco_order",data= send_in_parameters)
 def insert_cac_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1153,7 +1130,7 @@ def insert_cac_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,t
     send_in_parameters['task_node']='SH'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/cac",data= send_in_parameters)
+    receive=requests.post("http://xxxx:8082/cac",data= send_in_parameters)
 def insert_infosecinstitute_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1165,7 +1142,7 @@ def insert_infosecinstitute_fromADMIN(task_owner,task_startTime,task_endTime,tas
     send_in_parameters['task_node']='HK'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/infosecinstitute",data= send_in_parameters)
+    receive=requests.post("http://xxx:8081/infosecinstitute",data= send_in_parameters)
 def insert_trendmicro_fromADMIN(task_owner,task_startTime,task_endTime,task_frequency,task_crawlerId):
     send_in_parameters={}
     send_in_parameters['task_owner']=task_owner
@@ -1177,7 +1154,7 @@ def insert_trendmicro_fromADMIN(task_owner,task_startTime,task_endTime,task_freq
     send_in_parameters['task_node']='HK'
     send_in_parameters['task_communication']='email'
     logger.debug('-----------------post into node 02 -------------------')
-    receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/trendmicro",data= send_in_parameters)
+    receive=requests.post("http://xxx:8081/trendmicro",data= send_in_parameters)
 
 def default_cve_order():
     send_in_parameters={}
@@ -1191,7 +1168,7 @@ def default_cve_order():
     send_in_parameters['task_crawlerType']='event'
     send_in_parameters['task_node']='HK'
     send_in_parameters['task_communication']='email'
-    receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/cve_order",data= send_in_parameters)
+    receive=requests.post("http://xxx:8081/cve_order",data= send_in_parameters)
 def default_cnvd_order():
     send_in_parameters={}
     send_in_parameters['task_owner']='Jocob'
@@ -1204,7 +1181,7 @@ def default_cnvd_order():
     send_in_parameters['task_crawlerType']='event'
     send_in_parameters['task_node']='SH'
     send_in_parameters['task_communication']='email'
-    receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/cnvd",data= send_in_parameters)
+    receive=requests.post("http://xxxx:8082/cnvd",data= send_in_parameters)
 
 def email_1(request_id,report_id):
     days1 = datetime.date(2018, 07, 01)
@@ -1262,7 +1239,7 @@ def handleXuanwu():
             send_in_parameters['task_node'] = task_node  ## this is not to be used in the location here .......
             send_in_parameters['task_communication'] = task_communication
 
-            receive = requests.post("http://cti_sh_nd01.eycyber.com:8082/xuanwu_sh", data=send_in_parameters)
+            receive = requests.post("http://xxxx:8082/xuanwu_sh", data=send_in_parameters)
             logger.debug(receive.json)
 
             # ui_response = receive.data
@@ -1313,7 +1290,7 @@ def handlecisco():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/cisco_order",data= send_in_parameters)
+            receive=requests.post("http://xxx:8081/cisco_order",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1360,7 +1337,7 @@ def handlecac():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/cac",data= send_in_parameters)
+            receive=requests.post("http://xxxx:8082/cac",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1413,7 +1390,7 @@ def handleinfosecinstitute():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/infosecinstitute",data= send_in_parameters)
+            receive=requests.post("http://xxx:8081/infosecinstitute",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1459,7 +1436,7 @@ def handletrendmicro():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_hk_nd02.int.eycyber.com:8081/trendmicro",data= send_in_parameters)
+            receive=requests.post("http://xxx:8081/trendmicro",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1508,7 +1485,7 @@ def handletc260():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/tc260",data= send_in_parameters)
+            receive=requests.post("http://xxxx:8082/tc260",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data
@@ -1557,7 +1534,7 @@ def handlesafe_gave():
             send_in_parameters['task_node']=task_node ## this is not to be used in the location here .......
             send_in_parameters['task_communication']=task_communication
 
-            receive=requests.post("http://cti_sh_nd01.eycyber.com:8082/safe_gave",data= send_in_parameters)
+            receive=requests.post("http://xxxx:8082/safe_gave",data= send_in_parameters)
             logger.debug(receive.json)
             
             # ui_response = receive.data

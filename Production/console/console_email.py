@@ -6,12 +6,6 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEImage import MIMEImage
 from email.utils import formataddr
 import console_logger
-# email_of_user="alert@eycyber.com" #发件人地址
-# sender_name = "test" #发件人昵称
-# whom_to_send="13163240412@163.com" #收件人地址
-# subject="You have a task delay!" #邮件标题
-# temp_file = '''<h1>test</h1>''' #邮件内容以html
-# Cyber Threat Intelligence,skylark@eycyber.com
 
 import os
 import mysql.connector
@@ -21,7 +15,6 @@ mail_server_1 = os.environ['mail_server']
 mail_password = os.environ['mail_password']
 oss_host = os.environ['oss_host']
 oss_password = os.environ['oss_password']
-##"13163240412@163.com","Thierry.Huang@cn.ey.com","bumblehuang@163.com","jacob.ma@cn.ey.com","mark-jj.lu@cn.ey.com",'jacob.mhj@gmail.com'
 logger = console_logger.get_logger(__name__)
 def mail_sender(topic,filename):
     db = mysql.connector.connect(user='root',
