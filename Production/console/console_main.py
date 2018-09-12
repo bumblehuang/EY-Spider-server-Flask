@@ -484,8 +484,8 @@ def task_email_manual():
     num = (days2-days1).days
     weeks = (num//7)+1
     postfix = '(第'+str(weeks)+'周)'
-    console_email.mail_sender("云雀网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html')
-    console_email.mail_sender("云雀网络安全行业威胁情报"+postfix,'industry_mail.html')
+    console_email.mail_sender("xx网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html')
+    console_email.mail_sender("xx网络安全行业威胁情报"+postfix,'industry_mail.html')
 
 @listens_for(insert_report, 'after_insert')
 def do_report(mapper, connect, target):
@@ -1191,7 +1191,7 @@ def email_1(request_id,report_id):
     postfix = '(第'+str(weeks)+'周)'
     console_vul.write_html('report-v15.html',report_id,request_id)
     console_vul_brief.write_html('test_vul_word0705.html',report_id,request_id)
-    console_email.mail_sender("云雀网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html')
+    console_email.mail_sender("xx网络安全漏洞威胁情报"+postfix,'test_vul_word0705.html')
 def email_2(request_id,report_id):
     days1 = datetime.date(2018, 07, 01)
     days2 = datetime.date.today()
@@ -1200,7 +1200,7 @@ def email_2(request_id,report_id):
     postfix = '(第'+str(weeks)+'周)'
     console_industry_second.write_html('industry.html',report_id,request_id)
     console_industry_second_brief.write_html('industry_mail.html',report_id,request_id)
-    console_email.mail_sender("云雀网络安全行业威胁情报"+postfix,'industry_mail.html')
+    console_email.mail_sender("xx网络安全行业威胁情报"+postfix,'industry_mail.html')
 def email_3(github_keywords,weixin_keywords,request_id,report_id):
     days1 = datetime.date(2018, 07, 01)
     days2 = datetime.date.today()
@@ -1209,7 +1209,7 @@ def email_3(github_keywords,weixin_keywords,request_id,report_id):
     postfix = '(第'+str(weeks)+'周)'
     console_datasecurity.write_html('datesecurity.html',github_keywords, weixin_keywords,report_id,request_id)
     console_datasecurity_brief.write_html('datesecurity_mail.html',github_keywords, weixin_keywords,report_id,request_id)
-    console_email.mail_sender("云雀数据安全威胁情报"+postfix,'datesecurity_mail.html')
+    console_email.mail_sender("xx数据安全威胁情报"+postfix,'datesecurity_mail.html')
 def cve_detail_setup():
     page_list = console_db.second_cve_Urlcreator()
     console_db.second_cve_scrapper(page_list)

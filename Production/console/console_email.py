@@ -89,7 +89,7 @@ def mail_sender2(topic,filename,individual):
     email_of_user="skylark@eycyber.com" #发件人地址
     sender_name = "Cyber Threat Intelligence" #发件人昵称
     #收件人地址
-    # "jacob.ma@cn.ey.com","mark-jj.lu@cn.ey.com",
+   
     subject=topic #邮件标题
     
     username="CTI"          #smtp服务器用户名

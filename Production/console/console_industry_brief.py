@@ -141,7 +141,7 @@ def write_html(filename,report_id,request_id):
         num = (days2-days1).days
         weeks = (num//7)+1
         postfix = '(第'+str(weeks)+'周)'
-        f.write('''    <title>云雀网络安全行业威胁情报%s</title>\n'''%postfix)
+        f.write('''    <title>xx网络安全行业威胁情报%s</title>\n'''%postfix)
         f.write('''    <meta http-equiv="Content-Language" content="en">\n''')
         f.write('''    <meta name="apple-mobile-web-app-capable" content="yes">\n''')
         f.write('''    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n''')
@@ -556,7 +556,7 @@ def write_html(filename,report_id,request_id):
         num = (days2-days1).days
         weeks = (num//7)+1
         postfix = '(第'+str(weeks)+'周)'
-        f.write('''                    <h2>云雀网络安全行业威胁情报%s</h2>\n'''%postfix)
+        f.write('''                    <h2>xx网络安全行业威胁情报%s</h2>\n'''%postfix)
         f.write('''                    <p>针对当下常见的网络应用，我们搜集并整理了的主流漏洞发布站点中与其相关的安全漏洞更新信息（若您需要定制化内容请<a href="mailto:services@eycyber.com">点击</a>联系我们），并进行汇总和分析，具体内容如下，</p>\n''')
         f.write('''                    <h3>1.本周安全漏洞级别概况</h3>\n''')
 
